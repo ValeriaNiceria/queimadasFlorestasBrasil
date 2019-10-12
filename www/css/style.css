@@ -45,3 +45,21 @@
 .main-header .logo {
   height: 63px;
 }
+
+.control-sidebar.control-sidebar-dark {
+    margin-top: 17px;
+}
+
+
+.sidebar-menu {
+    margin-top: 14px;
+}
+
+.skin-blue .sidebar-menu > li.active > a {
+    border-left-color: #18a689;
+}
+
+.skin-blue .sidebar-menu > li.active > a, .skin-blue .sidebar-menu > li.menu-open > a, .skin-blue .sidebar-menu > li:hover > a {
+    color: #fff;
+    background: #0b3954;
+}
