@@ -19,8 +19,12 @@ body = shinydashboard::dashboardBody(
       )
     ),
     shinydashboard::tabItem(
-      tabName = "tab_exploratoria"
-      
+      tabName = "tab_exploratoria",
+      shinydashboardPlus::boxPlus(
+        width = 12,
+        title = "Total de queimadas por ano",
+        uiOutput("ui_graf_queimadas_anos")
+      )
     )
   )
 )
