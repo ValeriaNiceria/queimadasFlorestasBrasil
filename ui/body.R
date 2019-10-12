@@ -17,6 +17,10 @@ body = shinydashboard::dashboardBody(
         class="img-home",
         src = "img/banner.png"
       )
+    ),
+    shinydashboard::tabItem(
+      tabName = "tab_exploratoria"
+      
     )
   )
 )
