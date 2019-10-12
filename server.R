@@ -68,7 +68,7 @@ server <- function(input, output, server) {
   output$graf_highchart_queimadas_ano_selected <- renderHighchart({
     queimadas_ano_selecionado() %>% 
       hchart(type = "column", name = "Total queimadas durante o mês", hcaes(x = month, y = total)) %>% 
-      hc_xAxis(title = list(text = "Ano")) %>% 
+      hc_xAxis(title = list(text = "Mês")) %>% 
       hc_yAxis(title = list(text = "Total de queimadas")) %>% 
       hc_colors(c("#9b0000"))
   })
