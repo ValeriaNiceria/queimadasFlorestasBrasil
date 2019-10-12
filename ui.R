@@ -13,25 +13,16 @@ ui <- dashboardPagePlus(
     background = "dark",
     rightSidebarTabContent(
       id = 1,
-      title = "Tab 1",
-      icon = "desktop",
+      title = "Tipo de plot",
+      icon = "chart-pie",
       active = TRUE,
-      sliderInput(
-        "obs",
-        "Number of observations:",
-        min = 0, max = 1000, value = 500
+      p(style="font-style: italic", "Escolha um pacote para criação dos gráficos."),
+      selectInput(
+        inputId = "select_tipo_plot",
+        label = "Pacote:",
+        choices = c("highcharter", "ggplot2 + plotly"),
+        selected = "highcharter"
       )
-    ),
-    rightSidebarTabContent(
-      id = 2,
-      title = "Tab 2",
-      textInput("caption", "Caption", "Data Summary")
-    ),
-    rightSidebarTabContent(
-      id = 3,
-      icon = "paint-brush",
-      title = "Tab 3",
-      numericInput("obs", "Observations:", 10, min = 1, max = 100)
     )
   )
 )

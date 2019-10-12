@@ -67,4 +67,10 @@
 .img-home {
   width: 950px;
 }
+
+.control-sidebar-heading {
+  font-size: 19px;
+  padding: 0px 0;
+  margin-bottom: 10px;
+  font-weight: bold;
 }
