@@ -20,8 +20,8 @@ ui <- dashboardPagePlus(
       selectInput(
         inputId = "select_tipo_plot",
         label = "Pacote:",
-        choices = c("highcharter", "ggplot2 + plotly"),
-        selected = "highcharter"
+        choices = c("ggplot2 + plotly", "highcharter"),
+        selected = "ggplot2 + plotly"
       )
     )
   )

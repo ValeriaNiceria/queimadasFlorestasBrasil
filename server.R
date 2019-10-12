@@ -30,11 +30,12 @@ server <- function(input, output, server) {
     plot <- 
     queimadas_anos() %>% 
     ggplot(aes(year, total_queimadas)) +
-      geom_col(aes(fill=total_queimadas)) +
+      geom_col(aes(fill=total_queimadas), show.legend = FALSE) +
       scale_x_continuous(breaks = seq(from = 1998, to = 2017, by = 1)) +
       scale_y_continuous(breaks = seq(from = 0, to = 50000, by = 5000)) +
-      labs(x = "Ano", y = "Número de queimadas", title = "Número total de queimadas por ano") +
-      scale_fill_gradientn(colors = c("#f9020e", "#9b0000"))
+      labs(x = "Ano", y = "Total de queimadas", title = "") +
+      scale_fill_gradientn(colors = c("#f9020e", "#9b0000")) +
+      theme_minimal()
     
     ggplotly(plot)
   })
