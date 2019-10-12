@@ -20,10 +20,27 @@ body = shinydashboard::dashboardBody(
     ),
     shinydashboard::tabItem(
       tabName = "tab_exploratoria",
-      shinydashboardPlus::boxPlus(
-        width = 12,
-        title = "Total de queimadas por ano",
-        uiOutput("ui_graf_queimadas_anos")
+      fluidRow(
+        shinydashboardPlus::boxPlus(
+          width = 12,
+          title = "Total de queimadas por ano",
+          uiOutput("ui_graf_queimadas_anos")
+        )
+      ),
+      fluidRow(
+        shinydashboardPlus::boxPlus(
+          width = 12,
+          title = "Queimadas durante o ano",
+          fluidRow(
+            style="margin-top: -30px;",
+            column(2, selectInput(
+              inputId = "select_ano_queimada",
+              label = "",
+              choices = sort(unique(dados$year), decreasing = TRUE)
+            ))
+          ),
+          fluidRow(uiOutput("ui_graf_queimadas_ano_selected"))
+        )
       )
     )
   )
