@@ -3,7 +3,7 @@ sidebar = shinydashboard::dashboardSidebar(
     shinydashboard::menuItem(
       text = "Home",
       icon = icon("home"),
-      tabName = "tabHome"
+      tabName = "tab_home"
     )
   )
 )

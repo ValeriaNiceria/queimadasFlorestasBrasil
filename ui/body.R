@@ -8,5 +8,15 @@ body = shinydashboard::dashboardBody(
         $("body").addClass("sidebar-collapse");
       })
     ')
+  ),
+  
+  shinydashboard::tabItems(
+    shinydashboard::tabItem(
+      tabName = "tab_home",
+      img(
+        class="img-home",
+        src = "img/banner.png"
+      )
+    )
   )
 )

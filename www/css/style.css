@@ -50,7 +50,6 @@
     margin-top: 17px;
 }
 
-
 .sidebar-menu {
     margin-top: 14px;
 }
@@ -62,4 +61,10 @@
 .skin-blue .sidebar-menu > li.active > a, .skin-blue .sidebar-menu > li.menu-open > a, .skin-blue .sidebar-menu > li:hover > a {
     color: #fff;
     background: #0b3954;
+}
+
+
+.img-home {
+  width: 950px;
+}
 }
