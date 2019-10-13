@@ -61,6 +61,26 @@ body = shinydashboard::dashboardBody(
             fluidRow(
               column(5, highchartOutput('graf_map_queimadas_totais')),
               column(7, highchartOutput('graf_queimadas_estado_ano_selected'))
+          ),
+          
+          fluidRow(column(12, hr())),
+          
+          fluidRow(
+            column(width = 12,
+                   column(3,
+                          selectInput(
+                            inputId = "select_estado",
+                            label = "Selecione um estado:",
+                            choices = as.character(unique(dados$state)) )
+                          ),
+                   column(3,
+                          selectInput(
+                            inputId = "select_estado_ano",
+                            label = "Selecione um ano:",
+                            choices = c("Todos os anos", sort(unique(dados$year), decreasing = TRUE)) )
+                   )
+                  ),
+            highchartOutput('graf_estado_ano_queimadas')
           )
         )
       )
