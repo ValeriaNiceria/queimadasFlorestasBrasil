@@ -2,9 +2,9 @@
 
 ![Dash](www/img/dash.png)
 
-**➭** Click no [link](https://valerianiceria.shinyapps.io/queimadasflorestasbrasil/) para visualizar o projeto online.
-
 **Projeto de estudo** :book: :pencil:
+
+**➭** Click no [link](https://valerianiceria.shinyapps.io/queimadasflorestasbrasil/) para visualizar o projeto online.
 
 Os dados utilizados nesse dash foram encontrados no site [Kaggle](https://www.kaggle.com/gustavomodelli/forest-fires-in-brazil).
 
