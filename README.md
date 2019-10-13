@@ -8,11 +8,11 @@ Os dados utilizados nesse dash foram encontrados no site [Kaggle](https://www.ka
 
 ### Construção do projeto
 
-* R (versão 3.6.1)
+* R *(versão 3.6.1)*
 
 **Pacotes utilizados:** :package:
 
-* shiny (versão 1.4.0)
-* shinydashboardPlus (versão 0.7.0)
-* tidyverse (versão 1.2.1)
-* highcharter (versão 0.7.0)
+* shiny *(versão 1.4.0)*
+* shinydashboardPlus *(versão 0.7.0)*
+* tidyverse *(versão 1.2.1)*
+* highcharter *(versão 0.7.0)*
