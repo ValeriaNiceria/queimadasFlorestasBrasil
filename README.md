@@ -2,4 +2,4 @@
 
 ## Queimadas das florestas do Brasil
 
-![Dash]('www/img/dash.png')
+![Dash](www/img/dash.png)
