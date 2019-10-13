@@ -13,16 +13,11 @@ ui <- dashboardPagePlus(
     background = "dark",
     rightSidebarTabContent(
       id = 1,
-      title = "Tipo de plot",
-      icon = "chart-pie",
+      title = "Dataset",
+      icon = "database",
       active = TRUE,
-      p(style="font-style: italic", "Escolha um pacote para criação dos gráficos."),
-      selectInput(
-        inputId = "select_tipo_plot",
-        label = "Pacote:",
-        choices = c("ggplot2 + plotly", "highcharter"),
-        selected = "ggplot2 + plotly"
-      )
+      p(style="font-style: italic", "Os dados utilizados nesse dashboad foram encontrados no site",
+        a(href="https://www.kaggle.com/gustavomodelli/forest-fires-in-brazil", "kaggle"), "."),
     )
   )
 )

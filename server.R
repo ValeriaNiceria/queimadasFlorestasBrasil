@@ -1,48 +1,19 @@
 server <- function(input, output, server) {
   
-  output$ui_graf_queimadas_anos = renderUI({
-    if (input$select_tipo_plot == "highcharter") {
-      highchartOutput('graf_highchart_queimadas_anos')
-    } else {
-      plotlyOutput('graf_ggplot_queimadas_anos')
-    }
-  })
-  
   queimadas_anos <- reactive({
       dados %>% 
       group_by(year) %>% 
       summarise(total_queimadas = sum(number)) 
   })
   
-  output$graf_highchart_queimadas_anos <- renderHighchart({
+  output$graf_queimadas_anos <- renderHighchart({
     queimadas_anos() %>% 
-      hchart(type = "column", name = "Total queimadas durante o ano", hcaes(x = year, y = total_queimadas)) %>% 
+      hchart(type = "line", name = "Total queimadas durante o ano", hcaes(x = year, y = total_queimadas)) %>% 
       hc_xAxis(title = list(text = "Ano")) %>% 
       hc_yAxis(title = list(text = "Total de queimadas")) %>% 
       hc_colors(c("#9b0000"))
   })
-  
-  output$graf_ggplot_queimadas_anos <- renderPlotly({
-    plot <- 
-    queimadas_anos() %>% 
-    ggplot(aes(year, total_queimadas)) +
-      geom_col(aes(fill=total_queimadas), show.legend = FALSE) +
-      scale_x_continuous(breaks = seq(from = 1998, to = 2017, by = 1)) +
-      scale_y_continuous(breaks = seq(from = 0, to = 50000, by = 5000)) +
-      labs(x = "Ano", y = "Total de queimadas", title = "") +
-      scale_fill_gradientn(colors = c("#f9020e", "#9b0000")) +
-      theme_minimal()
-    
-    ggplotly(plot)
-  })
-  
-  output$ui_graf_queimadas_ano_selected <- renderUI({
-    if (input$select_tipo_plot == "highcharter") {
-      highchartOutput('graf_highchart_queimadas_ano_selected')
-    } else {
-      plotlyOutput('graf_ggplot_queimadas_ano_selected')
-    }
-  })
+
   
   queimadas_ano_selecionado <- reactive({
     queimadas <-
@@ -65,25 +36,49 @@ server <- function(input, output, server) {
     df_queimadas %>% arrange(num_month)
   })
   
-  output$graf_highchart_queimadas_ano_selected <- renderHighchart({
+  output$graf_queimadas_ano_selected <- renderHighchart({
     queimadas_ano_selecionado() %>% 
-      hchart(type = "column", name = "Total queimadas durante o mês", hcaes(x = month, y = total)) %>% 
+      hchart(type = "line", name = "Total queimadas durante o mês", hcaes(x = month, y = total)) %>% 
       hc_xAxis(title = list(text = "Mês")) %>% 
+      hc_yAxis(title = list(text = "Total de queimadas")) %>% 
+      # hc_title(text = "Queimadas durante o ano") %>% 
+      hc_colors(c("#9b0000"))
+  })
+
+  
+  queimadas_estados_total <- reactive({
+    
+    if (input$select_ano_queimada_estado != "Geral") {
+      dados <- dados %>% 
+        filter(year == input$select_ano_queimada_estado)
+    }
+
+    dados %>% 
+      left_join(uf_state) %>% 
+      group_by(UF) %>% 
+      summarise(total = sum(number)) %>% 
+      mutate(UF = as.character(UF))
+  })
+  
+  output$graf_map_queimadas_totais <- renderHighchart({
+    queimadas_estados_total <- queimadas_estados_total()
+    hcmap("countries/br/br-all", data = queimadas_estados_total, value = "total",
+          joinBy =  c("hc-a2", "UF"), name= "Total de queimadas",
+          dataLabels = list(enabled = TRUE, format = '{point.code}'),
+          tooltip = list(valueDecimals = 2, valuePrefix = "")) %>%
+      hc_colorAxis(minColor = "#FEE4D7", maxColor = "#9b0000") %>% 
+      hc_credits(enabled = FALSE)
+  })
+  
+  output$graf_queimadas_estado_ano_selected <- renderHighchart({
+    queimadas_estados_total() %>% 
+      left_join(uf_state) %>% 
+      arrange(desc(total)) %>% 
+      hchart(type = "bar", name = "Total queimadas durante", hcaes(x = state, y = total)) %>% 
+      hc_xAxis(title = list(text = "Estado")) %>% 
       hc_yAxis(title = list(text = "Total de queimadas")) %>% 
       hc_colors(c("#9b0000"))
   })
   
-  output$graf_ggplot_queimadas_ano_selected <- renderPlotly({
-    plot <-
-      queimadas_ano_selecionado() %>% 
-      mutate(mes = factor(month, levels = month)) %>% 
-      ggplot(aes(x = mes, total)) +
-        geom_col(color = "#9e0007", fill = "#c4000d", show.legend = FALSE) +
-        scale_y_continuous(breaks = seq(from = 0, to = 6000, by = 500))  +
-        labs(x = "Mês", y = "Total de queimadas", title = "") +
-        theme_minimal()
-    
-    ggplotly(plot)
-  })
   
 }

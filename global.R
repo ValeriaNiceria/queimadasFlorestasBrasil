@@ -10,3 +10,4 @@ library(plotly)
 
 # Lendo os dados
 dados <- read.csv("dados/amazon.csv", encoding = "latin1")
+uf_state <- readRDS("dados/uf_state.rds")
