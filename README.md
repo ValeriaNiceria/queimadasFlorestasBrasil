@@ -10,7 +10,7 @@ Os dados utilizados nesse dash foram encontrados no site [Kaggle](https://www.ka
 
 * R (versão 3.6.1)
 
-Pacotes utilizados: :package:
+**Pacotes utilizados:** :package:
 
 * shiny (versão 1.4.0)
 * shinydashboardPlus (versão 0.7.0)
