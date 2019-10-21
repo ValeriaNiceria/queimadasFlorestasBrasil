@@ -10,7 +10,7 @@ Os dados utilizados nesse dash foram encontrados no site [Kaggle](https://www.ka
 
 ### Construção do projeto
 
-* R *(versão 3.6.1)*
+* Linguagem de programação R *(versão 3.6.1)*
 
 **Pacotes utilizados:** :package:
 
